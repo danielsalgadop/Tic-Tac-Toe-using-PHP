@@ -49,130 +49,8 @@ The index.php file consists the code mentioned in the next section and also plac
  
 ## 3.	Program Specifications
 ### 3.1	Flow Chart
-
-
+[Attached as separate image]
 ### 3.2	Program Logic and Code Explanation
-
-<?php
-$winner = 'n';
-$box = array('','','','','','','','','');
-if (isset($_POST["submitbtn"]))
-{
-$box[0] = $_POST["box0"];
-$box[1] = $_POST["box1"];
-$box[2] = $_POST["box2"];
-$box[3] = $_POST["box3"];
- 
-$box[4] = $_POST["box4"];
-$box[5] = $_POST["box5"];
-$box[6] = $_POST["box6"];
-$box[7] = $_POST["box7"];
-$box[8] = $_POST["box8"];
-
-if(($box[0] == 'x' && $box[1] == 'x' && $box[2] == 'x')  || ($box[3] == 'x' && $box[4] ==
-'x' && $box[5] == 'x') || ($box[6] == 'x' && $box[7] == 'x' && $box[8] == 'x') || ($box[0] == 'x'
-&& $box[3] == 'x' && $box[6] == 'x')  ||  ($box[1] == 'x' && $box[4] == 'x' && $box[7] == 'x')
-|| ($box[2] == 'x' && $box[5] == 'x' && $box[8] == 'x') || ($box[0] == 'x' && $box[4] == 'x' &&
-$box[8] == 'x') || ($box[2] == 'x' && $box[4] == 'x' && $box[6] == 'x') )
-{
-$winner = 'x';
-Print "<h1>X Wins!</h1>";
-}
-
-$blank = 0;
-for ($i = 0; $i <= 8 ; $i++)
-{
-if($box[$i] == '')
-{
-$blank = 1;
-}
-}
-if($blank == 1)
-{
-$i = rand() % 8; while($box[$i] != '')
-{
-$i = rand() % 8;
-}
-$box[$i] = 'o';
-if(($box[0] == 'o' && $box[1] == 'o' && $box[2] == 'o')  || ($box[3] == 'o' && $box[4]
-== 'o' && $box[5] == 'o') || ($box[6] == 'o' && $box[7] == 'o' && $box[8] == 'o') || ($box[0] ==
-'o' && $box[3] == 'o' && $box[6] == 'o')  || ($box[1] == 'o' && $box[4] == 'o' && $box[7] ==
-'o') || ($box[2] == 'o' && $box[5] == 'o' && $box[8] == 'o') || ($box[0] == 'o' && $box[4] == 'o'
-&& $box[8] == 'o') || ($box[2] == 'o' && $box[4] == 'o' && $box[6] == 'o') )
-{
-$winner = 'o';
-Print "<h1>O Wins!</h1>";
-}
-
-}
-else if ($winner == 'n')
-{
-$winner = 't';
- 
-Print "<h1>Game Tied!</h1>";
-}
-}
-?>
-<html>
-<head>
-<title>Tic Tac Tow</title>
-<style> body {
-background-color: brown; text-align: center;
-}
-#ip{
-border-radius: 50px; border: 2px solid black; padding: 50px;
-width: 200px; height: 15px;
-margin-bottom: 20px; margin-top: 20px; margin-right: 20px; font-size: 30px;
-}
-#go{
-
-width: 200px; height: 15px; margin-top: 20px; padding: 50px; border-radius: 50px;
-}
-</style>
-</head>
-<body>
-<img src="Tic-Tac-Toe-Pro.jpg" alt="banner" style="width:1000px;height:300px;">
-<div style="margin:0 auto;width:75%;text-align:center;">
-<form name = "ticktactoe" method = "post" action = "index.php">
-<?php
-for($i = 0; $i <=8; $i++)
-{
- 
-
-$box[$i]);
-
-
-}
- 
-printf('<input type = "text" id = "ip" name = "box%s" value = "%s">', $i,
-
-if ($i == 2 || $i == 5 || $i == 8){ print("<br>");
-}
- 
-if($winner == 'n')
-{
- 
-
-"go">');
-}
-else
-{
- 
-print('<input type = "submit" name = "submitbtn" value = "Next Move" id =
-
-
-
-print('<input type = "button" name = "newgamebtn" value = "Play Again" id =
- 
-"go" onclick = "window.location.href=\'index.php\'">');
-}
-
-?>
-</form>
-</div>
-</body>
-</html>
-
 This project has a simple code logic where it consists of just one “index.php” file with a PHP section to begin with, followed by HTML code and the CSS code for the presentation which is internally present in the html code.
 PHP Section:
 The winner is set to “n” in the beginning and an array “box” is created for storing all the places with ‘x’ and ‘o’ throughout the game. On the event of clicking the go button, the values entered are stored in the respective places in the box array. Then the condition for ‘x’ winning is checked by checking if the places (0,1,2),(3,4,5),(6,7,8) [horizontal case] or (0,3,6),(1,4,7),(2,5,8)  [vertical case] or (0,4,8), (2,4,6)[diagonal case] is filled with ‘x’. If yes, then the winner is declared to be ‘x’ else ‘o’ is placed on a random place with the help of the” rand ()” function and later the condition for winning is checked for ‘o’ as well and if it is satisfied, ‘o’ is declared as winner. If at the end the winner variable is not changed and still remains “n” then the game is declared to be tied.
@@ -181,20 +59,7 @@ In the head section of HTML, the title is declared to be “tic tac toe” and a
 In the body section, to enhance the presentation of the game, a banner of a tic tac toe is given as an image source and added using the <img> tag. The form is placed in a <div> container and is called tic tac toe with the method to be post and action as itself. Next the grids are formed and in order to get the format of a 3x3 matrix, after every third box, i.e., at 2,5 and 8 there is a break. Next, if the winner remains to be “n” then the button remains as the next move button, on clicking which the computer makes its next move otherwise, if the game is over after the declaration of a winner or if the game is tied, then the button changes to a Play Again button that refreshes the page.
  
 ### 3.3	Screenshots
-
-Once the index page is opened, the page will look like the screenshot below
-
-
-The user then enter ‘x’ in any position he wants. For example, in the first position below
-
- 
-
-Then the computer enters ‘o’ in any position other than position 1 as shown below
-
-
-In the Event the X wins the game after playing, the page looks like so
-
- 
+[Attached as separate image]
 ## 4.	Future Work
 This project can further be extended by implementing machine learning on the backend of the system, so that the program automatically learns from different possibility how to win the game. Reinforcement learning in the machine learning field can be used to do it with minimum training data set.
 
