@@ -40,7 +40,7 @@ if (isset($_POST["gobtn"]))
 				$winner = 'o';
 				Print "<h1>O Wins!</h1>";
 			}
-			
+
 		}
 		else if ($winner == 'n')
 		{
@@ -52,31 +52,7 @@ if (isset($_POST["gobtn"]))
 <html>
 <head>
 	<title>Tic Tac Toe</title>
-	<style>
-	body {
-		background-color: brown;
-		text-align: center;
-	}
-	#ip{
-		border-radius: 50px;
-    	border: 2px solid black;
-    	padding: 50px; 
-    	width: 200px;
-    	height: 15px;
-    	margin-bottom: 20px;
-    	margin-top: 20px;
-    	margin-right: 20px;
-    	font-size: 30px;
-	}
-	#go{
-		 
-    	width: 200px;
-    	height: 15px;
-    	margin-top: 20px;
-    	padding: 50px;
-    	border-radius: 50px;
-	}
-	</style>
+	<link rel="stylesheet" href="css.css">
 </head>
 <body>
 	<img src="Tic-Tac-Toe-Pro.jpg" alt="banner" style="width:1000px;height:300px;">
@@ -98,7 +74,7 @@ if (isset($_POST["gobtn"]))
 			{
 				print('<input type = "button" name = "newgamebtn" value = "Play Again" id = "go" onclick = "window.location.href=\'index.php\'">');
 			}
-	
+
 		?>
 	</form>
 	</div>
